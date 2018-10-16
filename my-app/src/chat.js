@@ -64,15 +64,7 @@ class Chat extends React.Component {
     this.setState({ input: "" });
     console.log("state", this.state);
   };
-  handleFocus = (event, refName) => {
-    let node = React.findNodeHandle(this.refs[refName]);
-    let extraHeight = 500;
-    this.refs.keyboardAwareScrollView.scrollToFocusedInput(
-      event,
-      node,
-      extraHeight
-    );
-  };
+  
 
   render() {
     return (
