@@ -6,14 +6,14 @@ export let initialState={
         "value":"hi",
         "name":"My name is Jarvis",
         "hello":"Hello",
-        "time":`Time is ${new Date().toLocaleTimeString()}`,
-        "date":`Date is ${new Date().toLocaleDateString()}`,
+        // "time":`Time is ${new Date().toLocaleTimeString()}`,
+        // "date":`Date is ${new Date().toLocaleDateString()}`,
         "welcome":"Welcome Again",
         "please":"You are so cute",
         "test":random,
         "memory":"1 TB",
         "speed":"4 GB",
-        
+        "hi":"hi"
         
     }
 }
