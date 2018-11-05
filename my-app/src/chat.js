@@ -18,41 +18,40 @@ class Chat extends React.Component{
    
      sendData=(e)=>{
       e.preventDefault();
-      this.setState(prevState=>({message:[...prevState.message,{"name":"Akash","msg":this.state.input}]}),
-      () => {
-        let doc = document.getElementById("chat");
-        doc.scrollTop = doc.scrollHeight;
-      }
-    )
-    let result=""
-    if(this.state.input === 'time')
-    {
-      result=`Time is ${new Date().toLocaleTimeString()}`
-    }
-    else if(this.state.input === 'date')
-    {
-      result=`Date is ${new Date().toLocaleDateString()}`
-    }
-    else
-    {
-      let ob=this.state.input.split(" ").map(x=>x)
-      for(let i=0;i<ob.length;i++){
-        if(ob[i] in this.props.data.phrases)
-        {
-          result+=this.props.data.phrases[ob[i]]+'\n'
-        }
-      }
-    }
-      if(result !== "")
+      if(this.state.input.length>0)
       {
-        this.setState(prevState=>({message:[...prevState.message,{"name":"Robot","msg":result}]}))
+          this.setState(prevState=>({message:[...prevState.message,{"name":"Akash","msg":this.state.input}]}),
+          () => {
+            let doc = document.getElementById("chat");
+            doc.scrollTop = doc.scrollHeight;
+          }
+        )
+        let result=""
+          let ob=this.state.input.split(" ").map(x=>x)
+          for(let i=0;i<ob.length;i++){
+            if(ob[i] === 'time')
+            {
+              result=`Time is ${new Date().toLocaleTimeString()}`
+            }
+            else if(ob[i] === 'date'){
+              result=`Date is ${new Date().toLocaleDateString()}`
+            }
+          else if(ob[i] in this.props.data.phrases)
+            {
+              result+=this.props.data.phrases[ob[i]]+'\n'
+            }
+          }
+          if(result !== "")
+          {
+            this.setState(prevState=>({message:[...prevState.message,{"name":"Robot","msg":result}]}))
+          }
+          else{
+            this.setState(prevState=>({message:[...prevState.message,{"name":"Robot","msg":"I am not getting"}]})) 
+          }
+          this.setState({input:""})
+          console.log("state",this.state) 
       }
-      else{
-        this.setState(prevState=>({message:[...prevState.message,{"name":"Robot","msg":"I am not getting"}]})) 
-      }
-      this.setState({input:""})
-      console.log("state",this.state) 
-    }
+  }
    
  
 render() {
